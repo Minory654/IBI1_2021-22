@@ -1,2 +1,4 @@
-F**k the net.
-Always bugs and errors.
+I like programing.
+Though there's always bugs and errors.
+Each time you do something, 
+Remember to git add.

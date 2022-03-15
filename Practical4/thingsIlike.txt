@@ -1,17 +1,17 @@
-I like 1
-I like 2
-I like 3
-I like 4
-I like 8
+I like apple
+I like orange
+I like banana
+I like ice cream
+I like bull
 <<<<<<< HEAD
-I like 9 very much
+I like cats very much
 I like woman
 =======
-I like 9
-I don't like 10
-I like 11
-I like 12
-I like 13
-I like 14
-I like 15
+I like cats very much
+I don't like dogs
+I like pen
+I like pencil
+I like desktop
+I like fish
+I like house
 >>>>>>> Alex
