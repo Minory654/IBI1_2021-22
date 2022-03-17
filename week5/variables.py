@@ -21,6 +21,7 @@ print("Y is "+str(Y))
 W= X and Y
 print ("W is "+str(W))
 #Above is an example of the "and" result of 2 variables.
+#Now is the place to test other results of the "and" caculation of bool value
 print("Now input your own value for X and Y")
 X=input()
 Y=input()
