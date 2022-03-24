@@ -1,5 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
+
+#Pseudocode:1.Create dictionary through For loop. one in chd matches with one in Paternal_age.
+#2.Print the results.
+#3.Give the plot.
+#4.Create a variable that can be modyfy each time.
+
 paternal_age=[30,35,40,45,50,55,60,65,70,75]
 #This is for creating a list of paternal age.
 
