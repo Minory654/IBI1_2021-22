@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-#pseudocode:1.give the list an order. 2.Calculate the average through FOR loop. 3.Draw the box plot.
+#pseudocode:1.give the list an order. 2.Calculate the average through "FOR" loop. 3.Draw the box plot.
 
 marks=[45,36,86,57,53,92,65,45]
 #This is the list given by the practical.
