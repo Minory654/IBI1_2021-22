@@ -1,0 +1,7 @@
+1 How have new cases and total cases developed over time in Spain?
+2 The answear starts from line 66 to line 88.
+3 The trend of the new cases and total cases in Spain shows an
+incraseing speed of growth. The number of new_cases rose greatly
+on date about 2020/3/20 , and the final figure is above 8000 on
+2020/3/30. The number of total cases rose greatly on date about
+2020/3/25, and the final number of total cases is above 80000.
