@@ -1,6 +1,6 @@
 # What does this piece of code do?
 # Answer:
-#The code is used to form and print a random integer between 1 and 100
+#The code is used to form 10 random numbers from 1 to 100, and only prints the last one.
 # Import libraries
 # randint allows drawing a random number,
 # e.g. randint(1,5) draws a number between 1 and 5
