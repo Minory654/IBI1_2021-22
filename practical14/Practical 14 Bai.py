@@ -1,70 +1,86 @@
-from xml.dom.minidom import parse 
+from xml.dom.minidom import parse
 import xml.dom.minidom
 import matplotlib.pyplot as plt
-
-def recursion(term,e):
-    global terms
-    global g
-    is_as = term.getElementsByTagName('is_a')
-    for is_a in is_as:
-        c = is_a.childNodes[0].data
-        if g[c] == {c:0}:
-            e.append(c)
-            for i in e:
-                g[i][c] = 0
-            recursion(terms[list(g.keys()).index(c)],e)
-            del e[-1]
-        else:
-            for i in e:
-                g[i].update(g[c])
-
-
-domtree = xml.dom.minidom.parse("go_obo.xml")
-collection = domtree.documentElement
+import re
+import numpy as np
+DOMTree = xml.dom.minidom.parse("go_obo.xml")
+collection = DOMTree.documentElement
 terms = collection.getElementsByTagName("term")
-g = {}
-a = {}
-f = []
-b = []
+childnodes={}
+#First
+print("There are ",len(terms)," terms in the file.")
 
 for term in terms:
-    name = term.getElementsByTagName('id')[0].childNodes[0].data
-    g[name] = {name:0}
-    a[name] = -1
+    l=0
+    adder=[]
+    id= term.getElementsByTagName('id')[0].childNodes[0].data
+    for i in term.getElementsByTagName('is_a'):
+        adder.append(term.getElementsByTagName('is_a')[l].childNodes[0].data)
+        l=l+1
+    childnodes[id] = adder
+#create a dictionary called childnodes recording all ids of terms and their "is_a"s' id.
 
-for term in terms:
-    e = [term.getElementsByTagName('id')[0].childNodes[0].data]
-    recursion(term,e)
+v={}
+for i in childnodes:
+    v[i]=0
 
-print(g['GO:0000001'])
+new_dic={}
+timer=0
+for i in childnodes:
+    new_dic[i]=[]
 
-for i in g.values():
-    for j in i:
-        a[j] += 1
-print(a['GO:0000001'])
-for term in terms:
-    if 'translation' in term.getElementsByTagName('defstr')[0].childNodes[0].data.lower():
-       f.append(a[term.getElementsByTagName('id')[0].childNodes[0].data])
 
-plt.subplot(121)
-plt.boxplot(a.values())
-plt.title('Distribution of child node number of all GO terms')
-plt.xlabel("all GO terms")
-plt.ylabel("Number")
-plt.subplot(122)
-plt.boxplot(f)
-plt.title('Distribution of child node number of terms associated with ‘translation’')
-plt.xlabel("associated with ‘translation’")
-plt.ylabel("Number")
+timer=0
+
+
+def loop(a):
+    new_dic[m] += childnodes[a]
+    if len(childnodes[a])!=0:
+        for x in childnodes[a]:
+            loop(x)
+#Reverse the dictionary to get a dictionary filled with key of terms, and values of parentnodes
+
+for m in childnodes.keys():
+    loop(m)
+
+for i in new_dic:
+    new_dic[i]=list(set(new_dic[i]))
+for i in new_dic:
+    for j in new_dic[i]:
+        v[j]+=1
+values=[]
+#Delete repeated values of parentnodes and calculate numbers of childnodes
+
+for i in v:
+    values.append(v[i])
+translation=[]
+
+#distribution of child nodes in the Go
+plt.boxplot(values,
+            )
+plt.title("Distribution of childnodes in the GO.xml")
+plt.ylabel("Number of Childnodes")
 plt.show()
 
-'''y = open('1.txt','w')
-z = open('2.txt','w')
-for i in a.values():
-    y.write(str(i) + ',')
+#Distribution of child nodes in the GO associated with translation
+for term in terms:
+    id = term.getElementsByTagName('id')[0].childNodes[0].data
+    defi = term.getElementsByTagName('def')[0]
+    defstr=defi.getElementsByTagName('defstr')[0].childNodes[0].data
+    if defstr.find("translation")>=0:
+        translation.append(v[id])
 
-for i in f:
-    z.write(str(i) + ',')
+plt.boxplot(translation,
+            )
+plt.title("Distribution of child nodes from terms associated with translation")
+plt.ylabel("Childnodes")
+plt.show()
 
-y.close()
-z.close()'''
+print("The average of childnodes of all terms")
+print(np.average(values))
+print("The average of childnodes of terms associated with translation")
+print(np.average(translation))
+#COMMENT: The average of child nodes associated with translationis bigger than that of overall terms.
+
+
+
