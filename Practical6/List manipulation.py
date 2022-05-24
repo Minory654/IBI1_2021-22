@@ -34,5 +34,7 @@ plt.boxplot(marks,
             showfliers=True,
             notch=False,
             )
+plt.ylabel("scores")
+plt.title("distribution of scores")
 plt.show()
 #This is the 2nd result the Return asked. I show the bosplot of the data.
