@@ -1,6 +1,6 @@
 Summary:
 To compare the similarity between the sequence, I set up a grading rule according to BLOSUM.
-And, each different amino acid at same site will give 0 marks.
+Each amino acid in two sequences will compare and calculate their BLOSUM value, and they will be graded to be the final score of the comparison between two sequences.
 So, the result of the comparison is :
 The similarity score between human and mouse sequence is  1490
 The similarity score between human and random sequence is  -351
