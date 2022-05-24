@@ -1,9 +1,20 @@
 import re
+
+import pandas
+import pandas as pd
+data = pd.read_excel('BLOSUM.xlsx',index_col=0)
+data.to_csv('BLOSUM.csv',encoding='utf-8')
+new=pandas.read_csv("BLOSUM.csv")
+print(new.iloc[1,0])
+
 def grade(a,b):
-    if a==b:
-        return 1
-    else:
-        return 0
+    for i in range(23):
+        if a == new.iloc[i,0]:
+            for m in range(23):
+                if b == new.iloc[m,0]:
+                    return new.iloc[i,m+1]
+
+
 a=open("DLX5_human.fa",)
 b=open("DLX5_mouse.fa",)
 c=open("RandomSeq.fa",)
@@ -38,7 +49,18 @@ print("The similarity score between human and mouse sequence is ",hum_mou)
 print("The similarity score between human and random sequence is ",hum_ran)
 
 print("The similarity score between mouse and random sequence is ",ran_mou)
-
-print("The percentage of same amino acid between human and mouse is ",hum_mou/len(hum_l))
-print("The percentage of same amino acid between human and random sequence is ",hum_ran/len(hum_l))
-print("The percentage of same amino acid between mouse and random sequence is ",ran_mou/len(hum_l))
+n1=0
+n2=0
+n3=0
+for i in range(len(hum_l)):
+    if hum_l[i]==mou_l[i]:
+        n1+=1
+for i in range(len(hum_l)):
+    if hum_l[i]==ran_l[i]:
+        n2+=1
+for i in range(len(mou_l)):
+    if ran_l[i]==mou_l[i]:
+        n3+=1
+print("The percentage of same amino acid between human and mouse is ",n1/len(hum_l))
+print("The percentage of same amino acid between human and random sequence is ",n2/len(hum_l))
+print("The percentage of same amino acid between mouse and random sequence is ",n3/len(hum_l))

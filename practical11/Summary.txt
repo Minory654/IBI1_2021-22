@@ -1,10 +1,10 @@
 Summary:
-To compare the similarity between the sequence, I set up a grading rule that gives +1 score for each same amino acid.
+To compare the similarity between the sequence, I set up a grading rule according to BLOSUM.
 And, each different amino acid at same site will give 0 marks.
 So, the result of the comparison is :
-The similarity score between human and mouse sequence is  279
-The similarity score between human and random sequence is  8
-The similarity score between mouse and random sequence is  9
+The similarity score between human and mouse sequence is  1490
+The similarity score between human and random sequence is  -351
+The similarity score between mouse and random sequence is  -348
 The percentage of same amino acid between human and mouse is  0.9653979238754326
 The percentage of same amino acid between human and random sequence is  0.02768166089965398
 The percentage of same amino acid between mouse and random sequence is  0.031141868512110725
