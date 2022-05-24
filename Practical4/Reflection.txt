@@ -2,3 +2,9 @@ I like programing.
 Though there's always bugs and errors.
 Each time you do something, 
 Remember to git add.
+When I look back to the first few days when I learned biomedical informatics,
+I remembered I was almost confused about everything.
+But now, I can work with difficult calculations,
+working with data using numpy and pyplot.
+I realize that nothing is absolutely uncomprehensive,
+as long as keep learning.

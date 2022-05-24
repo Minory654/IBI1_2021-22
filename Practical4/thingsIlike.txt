@@ -3,6 +3,7 @@ I like orange
 I like banana
 I like ice cream
 I like bull
+I like mice
 <<<<<<< HEAD
 I like cats very much
 I like woman
