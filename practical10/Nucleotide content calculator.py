@@ -24,7 +24,7 @@ def DNA(seq):
 		if seq_list[i] == "T":
 			T = T + 1
 	total = A + G + C + T
-	print("A:", A / total, " G:", G / total, " C:", C / total, " T:", T / total, )
+	print("A:", A / total*100,"%", " G:", G / total*100,"%", " C:", C / total*100,"%"," T:", T / total*100,"%" )
 	return(A/total,G/total,C/total,T/total)
 print("Input the sequence, and the program give the percentage of each nucleotides")
 
